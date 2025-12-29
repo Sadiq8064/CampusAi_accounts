@@ -8,13 +8,6 @@ export default defineConfig(({ mode }) => ({
   server: {
     host: "::",
     port: 8082,
-    proxy: {
-      "/api": {
-        target: "https://campusai-916628151603.asia-south1.run.app",
-        changeOrigin: true,
-        secure: false,
-      },
-    },
   },
   plugins: [react(), mode === "development" && componentTagger()].filter(Boolean),
   resolve: {

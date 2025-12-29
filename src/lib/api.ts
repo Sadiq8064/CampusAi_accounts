@@ -1,5 +1,5 @@
-// Using relative path to use Vite proxy
-const BASE_URL = "";
+// Use environment variable or fallback to production API
+const BASE_URL = import.meta.env.VITE_API_URL || "https://campusai-916628151603.asia-south1.run.app";
 
 export const authApi = {
   login: async (email: string, password: string) => {
