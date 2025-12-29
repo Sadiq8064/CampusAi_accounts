@@ -1,0 +1,41 @@
+
+Running 1 test using 1 worker
+
+[1A[2K[1/1] [chromium] › tests\e2e-smoke.spec.ts:3:1 › smoke test: login -> dashboard -> logout
+[1A[2K  1) [chromium] › tests\e2e-smoke.spec.ts:3:1 › smoke test: login -> dashboard -> logout ───────────
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoBeVisible[2m([22m[2m)[22m failed
+
+    Locator: getByText('Dashboard')
+    Expected: visible
+    Error: strict mode violation: getByText('Dashboard') resolved to 2 elements:
+        1) <span>Dashboard</span> aka getByRole('link', { name: 'Dashboard' })
+        2) <h1 class="text-2xl font-bold tracking-tight">Dashboard</h1> aka getByRole('heading', { name: 'Dashboard' })
+
+    Call log:
+    [2m  - Expect "toBeVisible" with timeout 5000ms[22m
+    [2m  - waiting for getByText('Dashboard')[22m
+
+
+      42 |
+      43 |     // 5. Verify Dashboard Content
+    > 44 |     await expect(page.getByText('Dashboard')).toBeVisible();
+         |                                               ^
+      45 |
+      46 |     // 6. Logout
+      47 |     await page.click('button:has-text("AD")'); // Avatar button
+        at C:\Users\owais\Downloads\frontend\local-gov-connect-main(Final)\tests\e2e-smoke.spec.ts:44:47
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results\e2e-smoke-smoke-test-login---dashboard---logout-chromium\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    test-results\e2e-smoke-smoke-test-login---dashboard---logout-chromium\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results\e2e-smoke-smoke-test-login---dashboard---logout-chromium\error-context.md
+
+
+[1A[2K  1 failed
+    [chromium] › tests\e2e-smoke.spec.ts:3:1 › smoke test: login -> dashboard -> logout ────────────

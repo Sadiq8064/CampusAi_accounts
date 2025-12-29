@@ -1,0 +1,19 @@
+
+Running 1 test using 1 worker
+
+[1A[2K[1/1] [chromium] › tests\e2e-smoke.spec.ts:3:1 › smoke test: login -> dashboard -> logout
+[1A[2K  1) [chromium] › tests\e2e-smoke.spec.ts:3:1 › smoke test: login -> dashboard -> logout ───────────
+
+    Error: browserType.launch: Executable doesn't exist at C:\Users\owais\AppData\Local\ms-playwright\chromium_headless_shell-1194\chrome-win\headless_shell.exe
+    ╔═════════════════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright Test or Playwright was just installed or updated. ║
+    ║ Please run the following command to download new browsers:              ║
+    ║                                                                         ║
+    ║     npx playwright install                                              ║
+    ║                                                                         ║
+    ║ <3 Playwright Team                                                      ║
+    ╚═════════════════════════════════════════════════════════════════════════╝
+
+
+[1A[2K  1 failed
+    [chromium] › tests\e2e-smoke.spec.ts:3:1 › smoke test: login -> dashboard -> logout ────────────

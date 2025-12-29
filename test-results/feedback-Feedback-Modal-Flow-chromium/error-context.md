@@ -1,0 +1,137 @@
+# Page snapshot
+
+```yaml
+- generic:
+  - generic:
+    - list
+    - region "Notifications alt+T"
+    - generic:
+      - generic:
+        - generic:
+          - link:
+            - /url: /dashboard
+            - generic: G
+            - generic: GovConnect
+          - generic:
+            - generic:
+              - img
+              - generic: Search
+              - generic: Ctrl+K
+          - navigation:
+            - button:
+              - img
+              - text: Chat
+            - button:
+              - img
+              - text: Social Media
+            - button:
+              - img
+              - text: Tickets
+            - button:
+              - img
+              - text: Services
+          - generic:
+            - generic:
+              - img
+              - generic: History
+            - generic:
+              - generic:
+                - heading [level=3]: Today
+                - button: Friendly greeting exchange
+              - generic:
+                - heading [level=3]: Yesterday
+                - button: Keyboard Glitch Sparks Humor
+              - button: See all
+          - generic:
+            - generic:
+              - generic:
+                - img
+              - generic:
+                - generic: User Name
+                - generic: user@example.com
+      - generic:
+        - generic:
+          - generic:
+            - generic:
+              - heading [level=1]: Services
+              - generic: Select a service to provide feedback
+            - generic:
+              - generic:
+                - generic:
+                  - generic:
+                    - generic:
+                      - img
+                  - heading [level=3]: Municipal-Road
+                - generic:
+                  - paragraph: Road maintenance, pothole repairs, and street infrastructure.
+                  - button:
+                    - img
+                    - text: Give Feedback
+              - generic:
+                - generic:
+                  - generic:
+                    - generic:
+                      - img
+                  - heading [level=3]: Municipal-Water
+                - generic:
+                  - paragraph: Water supply, pipeline repairs, and quality monitoring.
+                  - button:
+                    - img
+                    - text: Give Feedback
+              - generic:
+                - generic:
+                  - generic:
+                    - generic:
+                      - img
+                  - heading [level=3]: Municipal-Sanitation
+                - generic:
+                  - paragraph: Waste management, street cleaning, and sanitation services.
+                  - button:
+                    - img
+                    - text: Give Feedback
+              - generic:
+                - generic:
+                  - generic:
+                    - generic:
+                      - img
+                  - heading [level=3]: Fire
+                - generic:
+                  - paragraph: Fire safety inspections, emergency response, and prevention.
+                  - button:
+                    - img
+                    - text: Give Feedback
+              - generic:
+                - generic:
+                  - generic:
+                    - generic:
+                      - img
+                  - heading [level=3]: Electricity
+                - generic:
+                  - paragraph: Power supply, street lighting, and electrical maintenance.
+                  - button:
+                    - img
+                    - text: Give Feedback
+  - dialog "Give Feedback" [ref=e2]:
+    - generic [ref=e3]:
+      - heading "Give Feedback" [level=2] [ref=e4]
+      - paragraph [ref=e5]: Rate your experience with Municipal-Road
+    - generic [ref=e6]:
+      - radiogroup "Rating" [ref=e7]:
+        - radio "1 stars" [active] [ref=e8] [cursor=pointer]:
+          - img [ref=e9]
+        - radio "2 stars" [ref=e11] [cursor=pointer]:
+          - img [ref=e12]
+        - radio "3 stars" [ref=e14] [cursor=pointer]:
+          - img [ref=e15]
+        - radio "4 stars" [ref=e17] [cursor=pointer]:
+          - img [ref=e18]
+        - radio "5 stars" [ref=e20] [cursor=pointer]:
+          - img [ref=e21]
+      - textbox "Tell us more about your experience..." [ref=e24]
+    - generic [ref=e25]:
+      - button "Cancel" [ref=e26] [cursor=pointer]
+      - button "Save Feedback" [disabled]
+    - button "Close" [ref=e27] [cursor=pointer]:
+      - img [ref=e28]
+      - generic [ref=e31]: Close
+```
