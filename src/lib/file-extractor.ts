@@ -22,6 +22,8 @@ export async function extractTextFromFile(file: File): Promise<string> {
             return await extractDOCX(file);
         } else if (name.endsWith(".xlsx")) {
             return await extractExcel(file);
+        } else if (name.endsWith(".pptx") || name.endsWith(".ppt")) {
+            return await extractPPTX(file);
         } else if (name.endsWith(".json")) {
             return await extractJSON(file);
         } else if (name.match(/\.(png|jpg|jpeg)$/)) {
@@ -162,4 +164,44 @@ async function extractImage(file: File): Promise<string> {
     const result = await worker.recognize(file);
     await worker.terminate();
     return result.data.text;
+}
+
+// --- PPTX Extraction ---
+
+import JSZip from 'jszip';
+
+async function extractPPTX(file: File): Promise<string> {
+    const arrayBuffer = await file.arrayBuffer();
+    const zip = await JSZip.loadAsync(arrayBuffer);
+
+    const slideFiles = Object.keys(zip.files).filter(fileName =>
+        fileName.startsWith("ppt/slides/slide") && fileName.endsWith(".xml")
+    );
+
+    // Sort slides to maintain order (slide1.xml, slide2.xml, etc.)
+    slideFiles.sort((a, b) => {
+        const numA = parseInt(a.match(/slide(\d+)\.xml/)?.[1] || "0");
+        const numB = parseInt(b.match(/slide(\d+)\.xml/)?.[1] || "0");
+        return numA - numB;
+    });
+
+    let fullText = "";
+
+    for (const slideFile of slideFiles) {
+        const slideXml = await zip.file(slideFile)?.async("string");
+        if (slideXml) {
+            // Extract text from XML (simple regex approach for a:t tags)
+            // Powerpoint text is usually in <a:t>...</a:t>
+            const textMatches = slideXml.match(/<a:t[^>]*>(.*?)<\/a:t>/g);
+            if (textMatches) {
+                const slideText = textMatches.map(tag =>
+                    tag.replace(/<[^>]+>/g, "") // Remove tags
+                ).join(" ");
+
+                fullText += `--- Slide ${slideFiles.indexOf(slideFile) + 1} ---\n${slideText}\n\n`;
+            }
+        }
+    }
+
+    return fullText || "No text found in presentation.";
 }
